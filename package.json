@@ -1,0 +1,14 @@
+{
+  "name": "googleTrends",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "google-trends-api": "^4.9.0",
+    "node-fetch": "^2.6.1",
+    "socket.io": "^3.0.4",
+    "socket.io-client": "^3.0.4"
+  },
+  "devDependencies": {
+    "xml2js": "^0.4.23"
+  }
+}

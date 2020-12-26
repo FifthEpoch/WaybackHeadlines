@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A world in keywords</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <form id="form" autocomplete="off" action="">
+            <input type="text" id="searchbar" autocomplete="off" placeholder="Enter a search term or topic"/><button>ENTER</button>
+            <div id="ACdiv" class="autocomplete"></div>
+    </form>
+</div><br><br><br><br>
+<div id="chartdiv">
+    <svg id="trendsChart" ></svg>
+</div>
+<div id="keyword"></div>
+<div id="metrics"></div>
+<div id="rssFeed"></div><br><br><br>
+<div id="privacy"></div>
+<div id="home"></div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/js/googleTrends-client.js"></script>
+
+</body>
+</html>
