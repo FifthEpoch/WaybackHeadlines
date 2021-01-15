@@ -41,12 +41,10 @@ io.on('connection', (socket) => {
     interestOverTime('surveillance capitalism');
 
     socket.on('search', (keyword) => {
-        console.log('search (keyword) received: ' + keyword);
         interestOverTime(keyword);
     });
 
     socket.on('relatedSearch', (keyword) => {
-        console.log('relatedSearch received: ' + keyword);
         relatedTopics(keyword);
     });
 
@@ -63,13 +61,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('fetchReq', (obj) => {
-        console.log('fetchReq received');
         fetchRSS(obj.url);
         fetchStockData(obj.startDate, obj.endDate);
     });
 
     socket.on('newsImgReq', (obj) => {
-        console.log('newsImgReq received');
         fetchImage(obj.url, obj.count);
     });
 
@@ -132,7 +128,6 @@ io.on('connection', (socket) => {
                 socket.emit('fetchRes', { text: text });
             })
             .catch (function(err) {
-                console.log('err_fetchReq: \n' + 'err.toString() => ' + err.toString());
                 socket.emit('err_fetchReq', { text: err.toString()} );
             });
     }
@@ -204,7 +199,6 @@ io.on('connection', (socket) => {
             function fetchNDX(url) {
                 fetch(url).then(res => res.text())
                     .then((text) => {
-                        console.log(text);
                         let parsed = JSON.parse(text);
                         let data = parsed.dataset.data;
                         let NDX = [];
@@ -215,7 +209,7 @@ io.on('connection', (socket) => {
                         socket.emit('NDX res', { ary : NDX });
                     })
                     .catch((err) => {
-                        console.log('fetch NDX error: ' + err);
+                        // emit error
                     });
             }
         });
@@ -235,7 +229,6 @@ io.on('connection', (socket) => {
         function fetchCurrencyData(url, dataTitle) {
             fetch(url).then(res => res.text())
                 .then(text => {
-                    console.log(`${dataTitle}: \n${text}`);
                     let parsed = JSON.parse(text);
                     let safeDate = endDate;
                     if (!(parsed["Time Series FX (Monthly)"][safeDate])) {
@@ -264,7 +257,6 @@ io.on('connection', (socket) => {
         function fetchMonthData(url, dataTitle, n) {
             fetch(url).then(res => res.text())
                 .then(text => {
-                    console.log(`${dataTitle}: \n${text}`);
                     let parsed = JSON.parse(text);
                     let data = parsed.dataset.data;
                     let average = (data[0][n] + data[data.length - 1][n]) / 2;
@@ -282,7 +274,6 @@ io.on('connection', (socket) => {
         function fetchDayData(url, dataTitle) {
             fetch(url).then(res => res.text())
                 .then(text => {
-                    console.log(`${dataTitle}: \n${text}`);
                     let parsed = JSON.parse(text);
                     let data_tp = parsed.dataset.data[0][1],
                         data_lp = parsed.dataset.data[1][1];
@@ -341,12 +332,11 @@ io.on('connection', (socket) => {
                         }
                         i++;
                     }
-                    console.log('ids = ' + ids);
                     socket.emit('newsImgRes', { ids: ids, links: links })
                 }
             })
             .catch((err) => {
-                console.log('error in fetchImage(): ' + err);
+                // emit error
             });
     }
 });
