@@ -6,6 +6,10 @@ var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
+http.listen(process.env.PORT || 3000, () => {
+    console.log('listening on port 3000');
+});
+
 const START_DATE = new Date('2010-01-01');
 const END_DATE = new Date(Date.now());
 
@@ -17,7 +21,7 @@ const quandl_04 = 'FSoWe8SecYxpbyMAVx8G';
 const quandl_05 = '4XQXjDDC2-yx5z-3dXJ3';
 const quandl_06 = 'mDwEsVLU7kjrv7nwvUMT';
 
-var pub_dir = '/Users/tingting/WebstormProjects/googleTrends/public';
+var pub_dir = __dirname + '/public';
 app.use(express.static(pub_dir));
 app.use('/style', express.static(pub_dir + '/css'));
 app.use('/script', express.static(pub_dir + '/js'));
@@ -345,8 +349,4 @@ io.on('connection', (socket) => {
                 console.log('error in fetchImage(): ' + err);
             });
     }
-});
-
-http.listen(3000, () => {
-    console.log('listening on port 3000');
 });
