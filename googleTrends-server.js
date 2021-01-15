@@ -6,8 +6,8 @@ var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
-http.listen(process.env.PORT || 3000, () => {
-    console.log('listening on port 3000');
+http.listen(process.env.PORT || 8080, () => {
+    console.log('listening on port 8080');
 });
 
 const START_DATE = new Date('2010-01-01');
