@@ -107,7 +107,7 @@ socket.on('search results', (results) => {
     keyword = results.keyword;
     time_ary = results.time_ary;
     val_ary = results.val_ary;
-    document.getElementById('keyword').innerHTML = `CLICK ON THE GRAPH TO LEARN MORE ABOUT <kw-var>${kw.toUpperCase()}</kw-var> FROM THE SELECTED MONTH.`;
+    document.getElementById('keyword').innerHTML = `☝ CLICK ON THE GRAPH TO LEARN MORE ABOUT <kw-var>${kw.toUpperCase()}</kw-var> FROM THE SELECTED MONTH.`;
     removeAllChildNodes(document.getElementById('trendsChart'));
     removeAllChildNodes(document.getElementById('rssFeed'));
     draw(time_ary, val_ary);
@@ -445,20 +445,20 @@ function draw(time_ary, val_ary) {
     gradient.append("stop")
         .attr('class', 'start')
         .attr("offset", "0%")
-        .attr("stop-color", "#DA4C00")
+        .attr("stop-color", "#46937A")
         .attr("stop-opacity", 1);
 
     gradient.append("stop")
         .attr('class', 'end')
         .attr("offset", "100%")
-        .attr("stop-color", "#DA4C00")
+        .attr("stop-color", "#46937A")
         .attr("stop-opacity", 0);
 
     // draw line and area
 
     svg.append("path")
         .attr("d", line(obj))
-        .attr("stroke", "#FF5F09")
+        .attr("stroke", "#3CD6A4")
         .attr("stroke-width", "0.8")
         .attr("fill", "none");
 
@@ -483,7 +483,7 @@ function draw(time_ary, val_ary) {
         .style("top", "59px")
         .style("bottom", "0px")
         .style("left", "0px")
-        .style("background", "#F98701")
+        .style("background", "#3CD6A4")
         .style("opacity", 0);
 
     d3.select('#verticalLine').append("div")
@@ -510,7 +510,7 @@ function draw(time_ary, val_ary) {
     function customYAxis(g) {
         g.call(yAxis);
         g.select(".domain").remove();
-        g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#dae0e6").attr("stroke-dasharray", "2,2").attr("stroke-width", "0.3px");
+        g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#3CD6A4").attr("stroke-dasharray", "2,2").attr("stroke-width", "0.3px");
         g.selectAll(".tick text").attr("x", 10).attr("dy", -4);
     }
 }
