@@ -1,6 +1,6 @@
 # Wayback Headlines
 
-Investigate Google Trends data alongside relevant news articles and market data. 
+Investigate Google Trends data alongside relevant news articles and market data.
 Visit the live site: [http://bit.ly/wayback-headlines](http://bit.ly/wayback-headlines)
 
 ## Usage
