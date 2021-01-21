@@ -20,5 +20,5 @@ Visit the live site: [http://bit.ly/wayback-headlines](http://bit.ly/wayback-hea
 
 ## Coming features
 
-1. layering 2 search term's line chart
-2. analyze news articles content for provide deeper insights
+- layering 2 search term's line chart
+- analyze news articles content for provide deeper insights
