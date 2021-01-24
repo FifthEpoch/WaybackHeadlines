@@ -113,7 +113,7 @@ socket.on('search results', (results) => {
     keyword = results.keyword;
     time_ary = results.time_ary;
     val_ary = results.val_ary;
-    document.getElementById('keyword').innerHTML = `☝ CLICK ON THE GRAPH TO LEARN MORE ABOUT <kw-var>${kw.toUpperCase()}</kw-var> FROM THE SELECTED MONTH.`;
+    document.getElementById('keyword').innerHTML = `☝ CLICK ON THE GOOGLE TREND GRAPH TO LEARN MORE ABOUT <kw-var>${kw.toUpperCase()}</kw-var> IN THAT TIME PERIOD.`;
     removeAllChildNodes(document.getElementById('trendsChart'));
     removeAllChildNodes(document.getElementById('rssFeed'));
     draw(time_ary, val_ary);
