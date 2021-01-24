@@ -17,6 +17,6 @@
   },
   "scripts" : {
     "start" : "node googleTrends-server.js && echo startFinished",
-    "poststart": "./readTailFor429.sh && echo postStartFinished"
+    "poststart": "chmod u+x && ./readTailFor429.sh && echo postStartFinished"
   }
 }
