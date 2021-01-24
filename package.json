@@ -6,6 +6,8 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "bunyan": "1.8.15",
+    "@google-cloud/logging-bunyan": "^3.0.1",
     "express": "^4.17.1",
     "google-trends-api": "^4.9.0",
     "node-fetch": "^2.6.1",
@@ -13,10 +15,11 @@
     "socket.io-client": "^3.0.4"
   },
   "devDependencies": {
+    "bunyan": "^1.8.15",
     "xml2js": "^0.4.23"
   },
-  "scripts" : {
-    "start" : "node googleTrends-server.js && echo startFinished",
+  "scripts": {
+    "start": "node googleTrends-server.js && echo startFinished",
     "poststart": "chmod u+x && ./readTailFor429.sh && echo postStartFinished"
   }
 }
