@@ -48,12 +48,18 @@ socket.on('privacy', (obj) => {
 
 socket.on('dailyTrends', (obj) => {
     let trending = obj.ary;
-    updateTags(home, 'GENERAL SEARCH TRENDS', trending);
+    updateTags(home, '📈 SEARCH TRENDS TODAY', trending);
 });
 
 socket.on('relatedTopics res', (obj) => {
     let related = obj.ary;
     updateTags(home, 'RELATED TOPICS', related);
+});
+
+socket.on('redeploy', () => {
+    alert('Google caught us web-scraping, ' +
+        '\nwe are working on fixing that.' +
+        '\nPlease try again in 3 minutes.');
 });
 
 function updateTags(el, titleStr, ary) {

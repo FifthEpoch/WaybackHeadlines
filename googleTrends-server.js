@@ -1,3 +1,15 @@
+const bunyan = require('bunyan');
+const {LoggingBunyan} = require('@google-cloud/logging-bunyan');
+const loggingBunyan = new LoggingBunyan();
+const logger = bunyan.createLogger({
+    name: 'my-service',
+    streams: [
+        {stream: process.stdout, level: 'info'},
+        loggingBunyan.stream('info'),
+    ],
+});
+
+
 const googleTrends = require('google-trends-api');
 const fetch = require("node-fetch");
 
@@ -42,6 +54,9 @@ io.on('connection', (socket) => {
 
     socket.on('search', (keyword) => {
         interestOverTime(keyword);
+
+        // TESTING 429 error logging <------------------------------------ DELETE BEFORE DEPLOY
+        logger.error('429 @ func fetchImage();');
     });
 
     socket.on('relatedSearch', (keyword) => {
@@ -336,7 +351,10 @@ io.on('connection', (socket) => {
                 }
             })
             .catch((err) => {
-                // emit error
+                if (err.toString().includes('429')) {
+                    logger.error('429 @ func fetchImage();');
+                    socket.emit('redeploy');
+                }
             });
     }
 });
