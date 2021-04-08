@@ -1,5 +1,6 @@
 import { io } from "socket.io-client";
-var socket = io({transports: ['websocket']});
+
+var socket = io();
 var time_ary = [],
     date_ary = [],
     val_ary = [];
